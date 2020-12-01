@@ -33,11 +33,19 @@ class Spaceship extends Floater {
   }
   
   public void hyperspace() {
-    myCenterX = Math.random()*1000;
-    myCenterY = Math.random()*800;
+    myCenterX = Math.random()*width;
+    myCenterY = Math.random()*height;
     myPointDirection = Math.random()*360;
     myXspeed = myYspeed = 0;
   }
+  
+  public double getCenterX() {
+    return myCenterX;
+  }
+  public double getCenterY() {
+    return myCenterY;
+  }
+  
   
    public void show ()  //Draws the floater at the current position  
   {             
