@@ -27,14 +27,14 @@ class Asteroid extends Floater {
     return myCenterY;
   }
   
-  void move() {
+  public void move() {
     turn(rotSpeed);
     myCenterX += myXspeed;
     myCenterY += myYspeed;
     super.move();
   } 
   
-  void show() {
+  public void show() {
     super.show();
   }
 }
