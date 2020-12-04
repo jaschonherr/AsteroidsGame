@@ -43,13 +43,13 @@ public void draw() {
   text("Asteroids Remaining: " + asteroids.size(), 0, 20);
 }
 
-void keyPressed() {
+public void keyPressed() {
   keys[key] = true;
   if(key == 'q') {
     ship.hyperspace();
   }
 }
 
-void keyReleased() {
+public void keyReleased() {
   keys[key] = false;
 }
