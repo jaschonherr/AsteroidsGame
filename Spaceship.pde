@@ -6,30 +6,53 @@ class Spaceship extends Floater {
     yCorners = new int[corners];
     xCorners[0] = -16; yCorners[0] = -8;
     xCorners[1] = -8; yCorners[1] = -16;
-    xCorners[2] = 12; yCorners[2] = -16;
+    xCorners[2] = 14; yCorners[2] = -16;
     xCorners[3] = -4; yCorners[3] = -8;
     xCorners[4] = 24; yCorners[4] = 0;
     xCorners[5] = -4; yCorners[5] = 8;
-    xCorners[6] = 12; yCorners[6] = 16;
+    xCorners[6] = 14; yCorners[6] = 16;
     xCorners[7] = -8; yCorners[7] = 16;
     xCorners[8] = -16; yCorners[8] = 8;
     xCorners[9] = -8; yCorners[9] = 0;
     myColor = color(179, 231, 242);
     myCenterX = 500;
     myCenterY = 400;
-    myXspeed = myYspeed = myPointDirection = 0;
+    myXspeed = myYspeed = 0;
+    myPointDirection = 0;
   }
-  
-  public void update () {
+  public void move() {
+    super.move();
     if(keys['d']) {
-      turn(5);
+      //turn(5);
     }
     if(keys['a']) {
-      turn(-5);
+      //turn(-5);
     }
-    if(keys['w']) {
-      accelerate(.1);
+    //sets max speed
+    if(Math.sqrt(myXspeed*myXspeed + myYspeed*myYspeed) > 5) {  
+      if(myXspeed < 0) {
+        myXspeed += 0.1;
+      } else {
+        myXspeed -= 0.1;
+      }
+      if(myYspeed < 0) {
+        myYspeed += 0.1;
+      } else {
+        myYspeed -= 0.1;
+      }
+    } else {
+      if(keys['w']) {
+        accelerate(.1);
+      }
     }
+    // point towards mouse
+    double xDiff = mouseX - myCenterX;
+    double yDiff = mouseY - myCenterY;
+    double angle = Math.atan(yDiff/xDiff) * (180/Math.PI);
+    if(xDiff < 0) {
+      angle += 180;
+    }
+    myPointDirection = angle;
   }
   
   public void hyperspace() {
@@ -45,7 +68,15 @@ class Spaceship extends Floater {
   public double getCenterY() {
     return myCenterY;
   }
-  
+  public double getXspeed() {
+    return myXspeed;
+  }
+  public double getYspeed() {
+    return myYspeed;
+  }
+  public double getPointDir() {
+    return myPointDirection;
+  }
   
    public void show ()  //Draws the floater at the current position  
   {             
