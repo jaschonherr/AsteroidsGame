@@ -11,6 +11,7 @@ int maxBullets = 6;
 int maxGrenades = 1;
 int maxPieces = 16;
 int tempMillis = 0;
+int totalMillis = 0;
 
 public void setup() {
   size(1000, 800);
@@ -111,6 +112,9 @@ public void draw() {
     ship.move();
     ship.show();
     gameUI.show();
+    if(asteroids.size() == 0) {
+      gameUI.win();
+    }
   } else {
     gameUI.gameOver();
   }
