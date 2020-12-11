@@ -68,9 +68,21 @@ class UI {
   }
   
   public void gameOver() {
+    fill(200, 0, 0);
     textSize(40);
     textAlign(CENTER);
     text("GAME OVER. REFRESH TO TRY AGAIN", width/2, height/2);
+  }
+  
+  public void win() {
+    if(totalMillis == 0) {
+      totalMillis = millis();
+    }
+    fill(0, 200, 0);
+    textSize(40);
+    textAlign(CENTER);
+    text("YOU WIN! Your time: " + (double)totalMillis / (double)1000 + " seconds", width/2, height/2 - 20);
+    text("Refresh to try again and beat your time!", width/2, height/2 + 20);
   }
     
 }
